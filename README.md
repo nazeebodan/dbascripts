@@ -1,1 +1,1 @@
-# dbascripts
+usually dba scripts
