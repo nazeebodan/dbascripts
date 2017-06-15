@@ -58,3 +58,23 @@ SELECT A.USERNAME,
                   WHERE T1.SESSION_ID = T2.SID)
    AND A.SQL_ADDRESS = C.ADDRESS(+)
  ORDER BY C.PIECE;
+ 
+------------------------------------------------------------------------
+--查被阻塞的会话
+select * from v$lock where lmode=0 and type in ('TM','TX');
+
+--查阻塞别的会话锁
+select * from v$lock where lmode>0 and type in ('TM','TX');
+
+--查询数据库正在等待锁的进程
+select * from v$session where lockwait is not null;
+
+--查询会话之间锁等待的关系
+SELECT A.SID HOLDSID, B.SID WAITSID, A.TYPE, A.ID1, A.ID2, A.CTIME
+  FROM V$LOCK A, V$LOCK B
+ WHERE A.ID1 = B.ID1
+   AND A.ID2 = B.ID2
+   AND A.BLOCK = 1
+   AND B.BLOCK = 0;
+------------------------------------------------------------------------
+
