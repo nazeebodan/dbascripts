@@ -13,6 +13,10 @@ SQL> select max(sequence#) from v$archived_log where applied='YES';
 SQL> select sequence# from v$archived_log  where recid = (select max(recid) from v$archived_log) and applied = 'YES';
 SQL> select sequence#  from v$archived_log where recid = (select max(recid) from v$archived_log);
 
+有个最简单的看备库是否和主库一致的方法：
+SQL> select max(lh.SEQUENCE#) ,max(al.SEQUENCE#)  fromv$log_history lh,v$archived_log al;
+如果2列的值一样，说明同步了.
+
 
 查主备库的日志是否已经一致了
 
