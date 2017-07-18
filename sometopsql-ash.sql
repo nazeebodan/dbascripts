@@ -12,7 +12,7 @@ select * from (
 	group by sql_id
 	order by sum(decode(session_state,'ON CPU',1,1))   desc
 	)
-where rownum <11;
+where rownum <11
 
 -------------------------------------------------------------------------------
 Top 10 wait events from v$active_session_history:
