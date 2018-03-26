@@ -54,7 +54,7 @@ shell> ln -s full-path-to-mysql-VERSION-OS mysql
 ```
 
 ```
-mkdir -p /u01/mysql/{mysql_data }
+mkdir -p /u01/mysql/{mysql_data,log,mysql_undolog,mysql_redolog}
 chown -R mysql.mysql /u01/mysql
 ```
 
