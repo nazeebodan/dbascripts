@@ -54,8 +54,8 @@ shell> ln -s full-path-to-mysql-VERSION-OS mysql
 ```
 
 ```
-mkdir -p /u01/mysql/{mysql_data,log,mysql_undolog,mysql_redolog}
-chown -R mysql.mysql /u01/mysql
+shell> mkdir -p /u01/mysql/{mysql_data,log,mysql_undolog,mysql_redolog}
+shell> chown -R mysql.mysql /u01/mysql
 ```
 
 ### 7.配置my.cnf
@@ -165,7 +165,7 @@ shell> grep 'temporary password' /u01/mysql/log/mysql_error.log
 ```
 生成ssl
 ```
-shell> mysql_ssl_rsa_setup --basedir=/opt/mysql-5.7.21 --datadir=/opt/mysql-5.7.21/data/
+shell> bin/mysql_ssl_rsa_setup    
 ```
 
 ### 9.配置服务
@@ -262,6 +262,14 @@ Reload privilege tables now? (Press y|Y for Yes, any other key for No) : y
 Success.
 
 All done!
+```
+
+注意:在MySQL5.7中修改密码用下面的SQL语句:
+```
+sql> update mysql.user set authentication_string=password('123456') where user='root';
+
+或者:
+sql> SET PASSWORD = PASSWORD(‘new password’);
 ```
 
 ###  13.将时区导入mysql数据库
