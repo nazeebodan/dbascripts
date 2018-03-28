@@ -236,6 +236,11 @@ shell> ssh-copy-id  -i  /root/.ssh/id_rsa.pub  "-p 10022  root@192.168.0.175"
 shell> ssh-copy-id  -i  /root/.ssh/id_rsa.pub  "-p 10022  root@192.168.0.176"
 shell> ssh-copy-id  -i  /root/.ssh/id_rsa.pub  "-p 10022  root@192.168.0.200"
 ```
+```
+或者修改全局的
+vim /etc/ssh/ssh_config
+Port 20022
+```
 
 #### 2.4 对从库进行设置
 ###### 2.4.1 设置只读
